@@ -61,13 +61,16 @@
   </style>
 
   <script>
-    spacing = document.querySelector('#spacing');
+    const inputs = document.querySelectorAll('.controls input');
 
-    function changeSpace(e) {
-      console.log(e);
-    }
+    function handleUpdate(){
+      const suffix = this.dataset.sizing || "";
+      document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix);
+    };
 
-    spacing.addEventListener('click', changeSpace)
+    inputs.forEach(input => input.addEventListener('change', handleUpdate));
+    inputs.forEach(input => input.addEventListener('mousemove', handleUpdate));
+
   </script>
 
 </body>
